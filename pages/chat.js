@@ -15,6 +15,7 @@ import React from "react";
 import appConfig from "../config.json";
 import { createClient } from '@supabase/supabase-js'
 import { useRouter } from 'next/router'
+import { ButtonSendSticker } from '../src/components/ButtonSendSticker'
 
 //Configuração API do SUPABASE 
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzMxODA3MSwiZXhwIjoxOTU4ODk0MDcxfQ.dANh9tzZIANAYuhMJcJvjwXN1bkJjzOtIAkTN_GkmH8';
@@ -27,7 +28,14 @@ export default function ChatPage() {
   const usuarioLogado = roteamento.query.username;
   
   const [mensagem, setMensagem] = React.useState("");
-  const [listaDeMensagens, setListaDeMensagens] = React.useState([]);
+  const [listaDeMensagens, setListaDeMensagens] = React.useState([
+      //TESTE inserindo sticker 
+      //{
+       // id: 1,
+       // de:'omariosouto',
+       // texto: ':sticker:https://www.alura.com.br/imersao-react-4/assets/figurinhas/Figurinha_1.png'
+     // }
+  ]);
 
     
     React.useEffect(() => {                                      //useEffect foi feito para lidar c/ tudo que foge do seu padrão/extra, um dado externo, por exemplo. O useEffect é carregado por padrão sempre que a página carrega. Caso eu queira que em decorrencia de um estado ele rode de novo, é preciso passar a decorrencia como parametro.
@@ -156,6 +164,7 @@ export default function ChatPage() {
                 color: appConfig.theme.colors.neutrals[200],
               }}
             />
+            <ButtonSendSticker />
           </Box>
         </Box>
       </Box>
@@ -246,6 +255,16 @@ function MessageList(props) {
                 {(new Date().toLocaleDateString())}
               </Text>
             </Box>
+          
+            {mensagem.texto.startsWith(':sticker:') // Se for começa com sticker..., se não for ...
+            ? (
+              <Image src = {mensagem.texto.replace(':sticker:', '')} /> // a IMAGE veio import "@skynexui
+            ) 
+            : (
+              mensagem.texto
+            )
+             
+            }
             {mensagem.texto}
           </Text>
         );
