@@ -6,8 +6,6 @@ import React from "react";
 import { useRouter } from 'next/router';
 
 
-
-
 function Title(props){
 
     const Tag = props.tag || 'h1';
@@ -16,9 +14,12 @@ function Title(props){
         <>
             <Tag>{props.children}</Tag>
             <style jsx>{`
-            ${Tag} { 
-                color: ${appConfig.theme.colors.neutrals["000"]};
-                font-size: 42px; 
+            ${Tag} {
+                @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Nunito:wght@600&display=swap'); 
+                font-family: 'Dancing Script';
+                color: ${appConfig.theme.colors.neutrals["050"]};
+                font-size: 42px;
+                
             }
             `}</style>
         </>
@@ -45,8 +46,8 @@ export default function PaginaInicial() {
       <Box
         styleSheet={{
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          backgroundColor: appConfig.theme.colors.primary[500],
-          backgroundImage: 'url(https://virtualbackgrounds.site/wp-content/uploads/2020/08/the-matrix-digital-rain.jpg)',
+          //backgroundColor: appConfig.theme.colors.primary[500],
+          backgroundImage: 'url(https://images8.alphacoders.com/503/503792.jpg)', //TELMI EDITION
           backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundBlendMode: 'multiply',
         }}
       >
@@ -61,8 +62,9 @@ export default function PaginaInicial() {
             },
             width: '100%', maxWidth: '700px',
             borderRadius: '5px', padding: '32px', margin: '16px',
-            boxShadow: '0 2px 10px 0 rgb(0 0 0 / 20%)',
-            backgroundColor: appConfig.theme.colors.neutrals[700],
+            boxShadow: '0 2px 50px 0 rgb(0 0 0 / 20%)',               //TELMI EDITION
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',                    //TELMI EDITION
+            //backgroundColor: appConfig.theme.colors.neutrals[700],  //TELMI EDITION
           }}
         >
           {/* Formulário */}
@@ -79,7 +81,7 @@ export default function PaginaInicial() {
               width: { xs: '100%', sm: '50%' }, textAlign: 'center', marginBottom: '32px',
             }}
           >
-            <Title tag="h2">Boas vindas de volta!</Title>
+            <Title tag="h2">Bem vindo! </Title>
             <Text variant="body3" styleSheet={{ marginBottom: '32px', color: appConfig.theme.colors.neutrals[300] }}>
               {appConfig.name}
             </Text>
