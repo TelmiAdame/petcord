@@ -26,6 +26,14 @@ function Title(props){
     )
 }
 
+function MaisDadosGitHub(){
+  return(
+    <>
+      <h1>Dados aqui</h1>
+    </>
+  )
+}
+
 //function HomePage() {
     //return (
     //<>
@@ -128,6 +136,10 @@ export default function PaginaInicial() {
                 mainColorStrong: appConfig.theme.colors.primary[600],
               }}
             />
+
+          <MaisDadosGitHub
+            src = ""
+          />
           </Box>
           {/* Formulário */}
 
